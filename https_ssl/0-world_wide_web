@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
-#Bash script the displays the subdomain and domains connected to your servers respectively 
-# Function to display information for a subdomain
+# Usage: ./0-world_wide_web <domain> <subdomain>
+# A Bash script the shows the domains and subdomains connected to your servers.
+
+# Function to retreive & display information about a subdomain
 display_subdomain_info() {
     local subdomain=$1
     local record_type=$2
@@ -9,7 +11,7 @@ display_subdomain_info() {
     echo "The subdomain $subdomain is a $record_type record and points to $destination"
 }
 
-# Check if domain argument is pchmod 600 /etc/letsencrypt/live/www.mulimuoki.tech/fullchain.pem
+# Check the number of arguments passed staright to the script
 if [[ -z $1 ]]; then
     echo "Domain argument is mandatory"
     exit 1
@@ -18,14 +20,14 @@ fi
 domain=$1
 subdomain=$2
 
-# Display information for default subdomains if subdomain argument is not provided
+# Display the information for the default subdomains if subdomain argument is not given
 if [[ -z $subdomain ]]; then
     display_subdomain_info "www" "A" "www.$domain"
     display_subdomain_info "lb-01" "A" "lb-01.$domain"
     display_subdomain_info "web-01" "A" "web-01.$domain"
     display_subdomain_info "web-02" "A" "web-02.$domain"
 else
-    # Display information for specified subdomain
+    # Display information for the specified subdomain
     case $subdomain in
         www)
             display_subdomain_info "www" "A" "www.$domain"
