@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 # Usage: ./0-world_wide_web <domain> <subdomain>
 # A Bash script the shows the domains and subdomains connected to your servers.
-
 # Function to retreive & display information about a subdomain
 display_subdomain_info() {
     local subdomain=$1
