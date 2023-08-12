@@ -37,7 +37,7 @@ frontend www-http
     mode http
     default_backend web-backend
 frontend www-https
-    bind *:443 ssl crt /etc/haproxy/kayongojb.tech.pem
+    bind *:443 ssl crt /etc/haproxy/mohamedyasin.tech.pem
     http-request set-header X-Forwarded-Proto https
     acl letsencrypt-acl path_beg /.well-known/acme-challenge/
     use_backend letsencrypt-backend if letsencrypt-acl
@@ -46,7 +46,7 @@ frontend www-https
 backend web-backend
     redirect scheme https unless { ssl_fc }
     balance roundrobin
-    server 5517-web-01 3.80.117.30:80 check
-    server 5517-web-02 54.227.173.17:80 check
+    server 5517-web-01 3.80.59.198:80 check
+    server 5517-web-02 3.91.68.232:80 check
 backend letsencrypt-backend
    server letsencrypt 127.0.0.1:54321
